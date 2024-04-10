@@ -24,6 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func openMain() {
 //        let splash = SplashRouter.createModule()
 //        self.window?.rootViewController = splash
+        let home = HomeRouter.createModule()
+        self.window?.rootViewController = home
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
