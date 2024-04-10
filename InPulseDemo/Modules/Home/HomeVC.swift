@@ -20,6 +20,13 @@ class HomeVC: UIViewController, PresenterToViewHomeProtocol {
     // AVCaptureDevice for camera
     private var captureDevice: AVCaptureDevice?
     private var videoPreviewLayer: AVCaptureVideoPreviewLayer?
+    private var heartRate: Int = 0 {
+        didSet {
+            DispatchQueue.main.async {
+                self.heartRateLabel.text = "\(self.heartRate) BPM"
+            }
+        }
+    }
     
     func setPresenter(presenter: ViewToPresenterHomeProtocol) {
         self.presenter = presenter
@@ -103,4 +110,67 @@ class HomeVC: UIViewController, PresenterToViewHomeProtocol {
         captureSession = nil
         captureDevice = nil
     }
+}
+
+extension HomeVC: AVCaptureVideoDataOutputSampleBufferDelegate {
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        // Process the video frame and calculate heart rate
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            return
+        }
+        
+        // Your heart rate calculation logic goes here
+//        let heartRateValue = calculateHeartRate(from: pixelBuffer)
+//        
+//        // Update the heart rate label
+//        self.heartRate = heartRateValue
+    }
+    
+//    private func calculateHeartRate(from pixelBuffer: CVPixelBuffer) -> Int {
+//        // 1. Convert the pixel buffer to a CIImage
+//        guard let image = CIImage(cvPixelBuffer: pixelBuffer) else {
+//            return 0
+//        }
+//        
+//        // 2. Apply a color filter to isolate the red channel
+//        let redFilter = CIFilter(name: "CIColorMonochrome")!
+//        redFilter.setValue(image, forKey: kCIInputImageKey)
+//        redFilter.setValue(CIVector(x: 1, y: 0, z: 0), forKey: kCIInputColorKey)
+//        redFilter.setValue(1.0, forKey: kCIInputIntensityKey)
+//        guard let redImage = redFilter.outputImage else {
+//            return 0
+//        }
+//        
+//        // 3. Perform a Fourier transform on the red channel data
+//        let width = CVPixelBufferGetWidth(pixelBuffer)
+//        let height = CVPixelBufferGetHeight(pixelBuffer)
+//        let redData = redImage.bitmap(width: width, height: height)
+//        let fft = performFFT(on: redData)
+//        
+//        // 4. Find the dominant frequency in the Fourier spectrum
+//        let dominantFrequency = findDominantFrequency(in: fft)
+//        
+//        // 5. Convert the dominant frequency to heart rate in BPM
+//        let heartRate = Int(dominantFrequency * 60)
+//        
+//        return heartRate
+//    }
+    
+//    private func performFFT(on data: [Float]) -> [Complex<Float>] {
+//        // Implement the Fast Fourier Transform algorithm here
+//        // You can use a library like vDSP or Accelerate.framework
+//        // to perform the FFT calculation
+//        
+//        // This is a placeholder, you'll need to replace it with your own FFT implementation
+//        return data.map { Complex($0, 0) }
+//    }
+    
+//    private func findDominantFrequency(in fft: [Complex<Float>]) -> Float {
+//        // Find the frequency with the highest magnitude in the Fourier spectrum
+//        // This is the dominant frequency, which corresponds to the heart rate
+//        
+//        // This is a placeholder, you'll need to replace it with your own logic
+//        // to find the dominant frequency
+//        return 1.2
+//    }
 }

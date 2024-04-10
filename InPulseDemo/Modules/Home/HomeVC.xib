@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sqe-YJ-Xqi">
-                    <rect key="frame" x="76.666666666666686" y="318.66666666666669" width="240" height="240.00000000000006"/>
+                    <rect key="frame" x="76.666666666666686" y="337.33333333333331" width="240" height="239.99999999999994"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="Sqe-YJ-Xqi" secondAttribute="height" multiplier="1:1" id="4nh-O0-sCn"/>
@@ -30,13 +30,16 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASI-x6-5sd">
-                    <rect key="frame" x="12" y="591" width="369" height="21"/>
+                    <rect key="frame" x="12" y="609.66666666666663" width="369" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="asq-8N-pXN"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NsC-h7-Shq">
-                    <rect key="frame" x="12" y="644" width="369" height="21"/>
+                    <rect key="frame" x="12" y="681.66666666666663" width="369" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="ezA-nN-Rr2"/>
                     </constraints>
